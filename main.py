@@ -225,7 +225,7 @@ def lasmo():
         abort(403)  # forbidden
     
     if request.method == 'GET':
-        dman = session.get('dman')
+        dman = session.get('ins')
     return render_template('main.html', dman=dman)
 
 if __name__ == '__main__':
